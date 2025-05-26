@@ -1,4 +1,4 @@
-package com.demo.apicallwithktor.ui.theme
+package com.demo.apicallwithktor.presenter.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
