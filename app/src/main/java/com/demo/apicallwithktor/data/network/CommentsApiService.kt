@@ -9,8 +9,13 @@ import javax.inject.Inject
 class CommentsApiService @Inject constructor(val httpClient: HttpClient) {
 
     suspend fun getCommentListAPI(): List<CommentsDTO> {
-        return httpClient.get("https://jsonplaceholder.typicode.com/comments")
-            .body<List<CommentsDTO>>()
+        return try {
+            httpClient.get("https://jsonplaceholder.typicode.com/comments")
+                .body<List<CommentsDTO>>()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emptyList<CommentsDTO>()
+        }
     }
 
 }
