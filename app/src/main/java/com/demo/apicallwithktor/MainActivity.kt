@@ -12,7 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.demo.apicallwithktor.core.screen.Screen
+import com.demo.apicallwithktor.core.route.Route
 import com.demo.apicallwithktor.presenter.screens.CommentDetailScreen
 import com.demo.apicallwithktor.presenter.screens.CommentsListScreen
 import com.demo.apicallwithktor.presenter.ui.theme.ApiCallWithKtorTheme
@@ -30,15 +30,15 @@ class MainActivity : ComponentActivity() {
 
                     NavHost(
                         navController = navController,
-                        startDestination = Screen.ListScreen.route
+                        startDestination = Route.ListScreen.route
                     ) {
-                        composable(route = Screen.ListScreen.route) {
+                        composable(route = Route.ListScreen.route) {
                             CommentsListScreen(innerPadding) {
-                                navController.navigate(route = Screen.DetailScreen.route + "?text=${it}")
+                                navController.navigate(route = Route.DetailScreen.route + "?text=${it}")
                             }
                         }
                         composable(
-                            route = Screen.DetailScreen.route + "?text={text}",
+                            route = Route.DetailScreen.route + "?text={text}",
                             arguments = listOf(
                                 navArgument("text") {
                                     type = NavType.StringType
